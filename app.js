@@ -7,7 +7,7 @@ const server = http.createServer(app);
 const cors = require('cors');
 const io = socketio(server, {
   cors: {
-    origin: "*",
+    origin: "https://realtime-location-tracker-rouge.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true
   },
