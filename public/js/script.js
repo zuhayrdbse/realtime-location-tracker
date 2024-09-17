@@ -1,6 +1,6 @@
 const socket = io({
-  transports: ['websocket'], // Force WebSocket
-  upgrade: false // Prevent upgrading to polling
+  transports: ["websocket", "polling"], // Force WebSocket
+  upgrade: false, // Prevent upgrading to polling
 });
 
 if (navigator.geolocation) {

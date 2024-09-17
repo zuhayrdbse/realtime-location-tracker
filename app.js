@@ -11,7 +11,8 @@ const io = socketio(server, {
     methods: ["GET", "POST"],
     credentials: true,
   },
-  transports: ["websocket"], // Force WebSocket transport
+  allowEIO3: true,
+  transports: ["websocket", "polling"], // Force WebSocket transport
   allowUpgrades: false,
 });
 
