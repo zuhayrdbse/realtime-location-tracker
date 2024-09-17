@@ -9,16 +9,21 @@ const io = socketio(server, {
   cors: {
     origin: "https://realtime-location-tracker-rouge.vercel.app",
     methods: ["GET", "POST"],
-    transports: ["websocket", "polling"], // Force WebSocket transport
     credentials: true,
   },
+  transports: ["websocket"], // Force WebSocket transport
   allowEIO3: true,
 });
+const corsOptions = {
+  origin: 'https://realtime-location-tracker-rouge.vercel.app',
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Handle socket connections
 io.on("connection", (socket) => {

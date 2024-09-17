@@ -1,5 +1,5 @@
-const socket = io({
-  transports: ["websocket", "polling"], // Force WebSocket
+const socket = io("wss://realtime-location-tracker-rouge.vercel.app", {
+  transports: ["websocket"], // Force WebSocket
 });
 
 if (navigator.geolocation) {
