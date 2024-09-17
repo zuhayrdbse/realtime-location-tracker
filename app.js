@@ -4,14 +4,15 @@ const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
-const cors = require('cors');
+const cors = require("cors");
 const io = socketio(server, {
   cors: {
     origin: "https://realtime-location-tracker-rouge.vercel.app/",
     methods: ["GET", "POST"],
-    credentials: true
+    credentials: true,
   },
-  transports: ['websocket'] // Force WebSocket transport
+  transports: ["websocket"], // Force WebSocket transport
+  allowUpgrades: false,
 });
 
 app.set("view engine", "ejs");
