@@ -5,20 +5,23 @@ const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
 const io = socketio(server);
+const cors = require('cors');
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
 
 // Handle socket connections
-io.on("connection", function (socket) {
-  console.log("New user connected");
+io.on("connection", (socket) => {
+  console.log("New WebSocket connection");
 
-  socket.on("send-location", function (data) {
+  socket.on("send-location", (data) => {
+    console.log("Location data received:", data);
     io.emit("receive-location", { id: socket.id, ...data });
   });
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", () => {
     console.log("User disconnected");
     io.emit("user-disconnected", socket.id);
   });
