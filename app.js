@@ -4,8 +4,15 @@ const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
-const io = socketio(server);
 const cors = require('cors');
+const io = socketio(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true
+  },
+  transports: ['websocket'] // Force WebSocket transport
+});
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

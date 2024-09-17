@@ -1,4 +1,7 @@
-const socket = io();
+const socket = io({
+  transports: ['websocket'], // Force WebSocket
+  upgrade: false // Prevent upgrading to polling
+});
 
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition(
