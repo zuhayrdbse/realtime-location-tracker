@@ -1,4 +1,4 @@
-const socket = io("wss://realtime-location-tracker-rouge.vercel.app", {
+const socket = io("https://realtime-location-tracker-rouge.vercel.app", {
   transports: ["websocket"], // Force WebSocket
 });
 
